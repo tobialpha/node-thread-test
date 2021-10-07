@@ -1,25 +1,10 @@
-const {Worker} = require("worker_threads");
-// run `node index.js` in the terminal
 
-console.log(`Hello Node.js v${process.versions.node}!`);
+const test = (x) => {
+  var y = x
+  return y
+}
 
-
-let num = 40;
-
-//Create new worker
-const worker = new Worker("./worker.js", {workerData: {num: num}});
-
-//Listen for a message from worker
-worker.once("message", result => {
-  console.log(`${num}th Fibonacci Number: ${result}`);
-});
-
-worker.on("error", error => {
-  console.log(error);
-});
-
-worker.on("exit", exitCode => {
-  console.log(exitCode);
-})
-
-console.log("Executed in the parent thread");
+let test1 = test(1);
+let test2 = test(2);
+console.log(test1);
+console.log(test2);
